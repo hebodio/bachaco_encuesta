@@ -1,0 +1,298 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+
+    <record model="ir.ui.view" id="view_bachaco_encuesta_form">
+        <field name="name">bachaco.encuesta.form</field>
+        <field name="model">bachaco.encuesta</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="bachaco.encuesta">
+            <sheet>
+            <group col="4" colspan="2" string="Datos Personales">
+                <field name="nombres" select="1"/>
+                <field name="apellidos" select="2"/>
+                <field name="sexo" select="0"/>
+                <field name="estado_id" select="0"/>
+                <field name="municipio_id" select="0" domain="[('estado_id', '=', estado_id)]"/>
+                <field name="parroquia_id" select="0" domain="[('municipio_id', '=', municipio_id)]"/>
+                <h4>Dirección</h4><newline/>
+                <field name="domicilio" colspan="2" nolabel="1" select="0" placeholder="Calle/Avenida, Urbanizacion/Sector"/>
+                <newline/>
+                <field name="correo" select="0"/>
+                <field name="telefono_personal" select="0"/>
+                <field name="telefono_otro" select="0"/>
+            </group>
+            <notebook>
+                <page string="Disponibilidad">
+            <group string="Estudio de Disponibilidad" col="4" colspan="2">
+
+                <h3 colspan="4">¿Estás dispuesto(a) a incorporarte en proyectos productivos?</h3><newline/>
+                <field name="disposicion_participar" select="0"/><newline/><newline/>
+
+                <h3 colspan="4">¿En cuánto tiempo?</h3><newline/>
+                <field name="disposicion_desde_cantidad" select="0" nolabel="1"/>
+                <field name="disposicion_desde_lapso" select="0" nolabel="1" placeholder="Seleccione un lapso" colspan="2"/><newline/><newline/>
+                <h3 colspan="4">¿Por cuánto tiempo?</h3><newline/>
+                <field name="disposicion_hasta_cantidad" select="0" nolabel="1"  colspan="2"/>
+                <field name="disposicion_hasta_lapso" select="0" nolabel="1" placeholder="Seleccione un lapso"/><newline/><newline/>
+
+                <h3 colspan="4">Bajo cuál de las siguientes figuras productivas</h3><newline/>
+                <field name="dispocicion_figura_productiva" colspan="4" nolabel="1" select="0" widget="many2many_checkboxes"/><newline/><newline/>
+                <h3 colspan="4">¿Se sumaría a otra unidad productiva?</h3><newline/>
+                <field name="disposicion_sumarse_unidades" select="0" string="Si/No" /><newline/><newline/>
+                <h3 colspan="4">¿Se sumaría a la nómina de la institución?</h3><newline/>
+                <field name="disposicion_sumarse_nomina" select="0" string="Si/No" /><newline/><newline/>
+            </group>
+        </page>
+        <page string="Habilidades">
+            <group>
+                <h3 colspan="4">¿Qué rol puede desempeñar?</h3><newline/>
+                <field name="caracterizacion_rol_ids" colspan="4" nolabel="1" select="0" widget="many2many_checkboxes"/>
+                <h3 colspan="4">¿Qué tecnologías base para Odoo domina?</h3><newline/>
+                <field name="caracterizacion_tenologias_base_ids" colspan="4" nolabel="1" select="0" widget="many2many_checkboxes"/>
+                <h3 colspan="4">¿Qué componentes del Framework domina?</h3><newline/>
+                <field name="caracterizacion_componentes_fwork_ids" colspan="4" nolabel="1" select="0" widget="many2many_checkboxes"/>
+                <h3 colspan="4">¿Qué módulos/addons de Odoo domina?</h3><newline/>
+                <field name="caracterizacion_modulos_ids" colspan="4" nolabel="1" select="0" widget="many2many_checkboxes"/>
+                <h3 colspan="4">¿Cuáles conocimientos de Procesos de Gestión Pública conoce?</h3><newline/>
+                <field name="caracterizacion_conocimento_proc_adm_ids" colspan="4" nolabel="1" select="0" widget="many2many_checkboxes"/>
+            </group>
+        </page>
+        </notebook>
+        </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_bachaco_encuesta_tree">
+        <field name="name">bachaco.encuesta.tree</field>
+        <field name="model">bachaco.encuesta</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="bachaco.encuesta">
+                <field name="nombres"/>
+                <field name="apellidos"/>
+                <field name="sexo"/>
+                <field name="estado_id"/>
+                <field name="municipio_id"/>
+                <field name="parroquia_id"/>
+                <field name="domicilio"/>
+                <field name="correo"/>
+                <field name="telefono_personal"/>
+                <field name="telefono_otro"/>
+                <field name="disposicion_participar"/>
+                <field name="disposicion_desde_cantidad"/>
+                <field name="disposicion_desde_lapso"/>
+                <field name="disposicion_hasta_cantidad"/>
+                <field name="disposicion_hasta_lapso"/>
+                <field name="disposicion_sumarse_unidades"/>
+                <field name="disposicion_sumarse_nomina"/>
+
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_bachaco_encuesta">
+        <field name="name">Encuesta</field>
+        <field name="res_model">bachaco.encuesta</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+        
+    <record model="ir.ui.view" id="view_bachaco_figuras_productivas_form">
+        <field name="name">bachaco.figuras_productivas.form</field>
+        <field name="model">bachaco.figuras_productivas</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="bachaco.figuras_productivas">
+            <group col="4" colspan="2">
+                <field name="denominacion" select="1"/>
+                <field name="siglas" select="2"/>
+                <separator string= 'Figura productiva' colspan="4"/>
+                <field name="encuesta_ids" colspan="4" nolabel="1" select="0"/>
+
+            </group>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_bachaco_figuras_productivas_tree">
+        <field name="name">bachaco.figuras_productivas.tree</field>
+        <field name="model">bachaco.figuras_productivas</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="bachaco.figuras_productivas">
+                <field name="denominacion"/>
+                <field name="siglas"/>
+
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_bachaco_figuras_productivas">
+        <field name="name">Figuras Productivas</field>
+        <field name="res_model">bachaco.figuras_productivas</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+        
+    <record model="ir.ui.view" id="view_bachaco_elementos_framework_form">
+        <field name="name">bachaco.elementos_framework.form</field>
+        <field name="model">bachaco.elementos_framework</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="bachaco.elementos_framework">
+            <group col="4" colspan="2">
+                <field name="denominacion" select="1"/>
+                <field name="tipo_elemento_id" select="2" widget="selection"/>
+                <separator string= 'Conocedores del tema' colspan="4"/>
+                <field name="encuestado_tecnologias_base_ids" colspan="4" nolabel="1" select="0"/>
+                <separator string=  'Conocedores del tema' colspan="4"/>
+                <field name="encuestados_componetes_fw_ids" colspan="4" nolabel="1" select="0"/>
+                <separator string= 'Conocedores del tema' colspan="4"/>
+                <field name="escuestado_modulos_ids" colspan="4" nolabel="1" select="0"/>
+
+            </group>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_bachaco_elementos_framework_tree">
+        <field name="name">bachaco.elementos_framework.tree</field>
+        <field name="model">bachaco.elementos_framework</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="bachaco.elementos_framework">
+                <field name="denominacion"/>
+                <field name="tipo_elemento_id"/>
+
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_bachaco_elementos_framework">
+        <field name="name">Elementos del Framework</field>
+        <field name="res_model">bachaco.elementos_framework</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+        
+    <record model="ir.ui.view" id="view_bachaco_roles_form">
+        <field name="name">bachaco.roles.form</field>
+        <field name="model">bachaco.roles</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="bachaco.roles">
+            <group col="4" colspan="2">
+                <field name="denominacion" select="1"/>
+                <separator string='Labor que ejecuta' colspan="4"/>
+                <field name="labor" colspan="4" nolabel="1" select="2"/>
+                <separator string= 'Dispuestos a asumir e rol' colspan="4"/>
+                <field name="encuestado_roles_ids" colspan="4" nolabel="1" select="0"/>
+
+            </group>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_bachaco_roles_tree">
+        <field name="name">bachaco.roles.tree</field>
+        <field name="model">bachaco.roles</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="bachaco.roles">
+                <field name="denominacion"/>
+                <field name="labor"/>
+
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_bachaco_roles">
+        <field name="name">Roles</field>
+        <field name="res_model">bachaco.roles</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+        
+    <record model="ir.ui.view" id="view_bachaco_procesos_gestion_form">
+        <field name="name">bachaco.procesos_gestion.form</field>
+        <field name="model">bachaco.procesos_gestion</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="bachaco.procesos_gestion">
+            <group col="4" colspan="2">
+                <field name="denominacion" select="1"/>
+                <separator string= 'conocedores del Proceso' colspan="4"/>
+                <field name="encuestado_procesos_adm_ids" colspan="4" nolabel="1" select="2"/>
+
+            </group>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_bachaco_procesos_gestion_tree">
+        <field name="name">bachaco.procesos_gestion.tree</field>
+        <field name="model">bachaco.procesos_gestion</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="bachaco.procesos_gestion">
+                <field name="denominacion"/>
+
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_bachaco_procesos_gestion">
+        <field name="name">Procesos de Gestión</field>
+        <field name="res_model">bachaco.procesos_gestion</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+        
+    <record model="ir.ui.view" id="view_bachaco_tipos_de_elementos_fw_form">
+        <field name="name">bachaco.tipos_de_elementos_fw.form</field>
+        <field name="model">bachaco.tipos_de_elementos_fw</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="bachaco.tipos_de_elementos_fw">
+            <group col="4" colspan="2">
+                <field name="denominacion" select="1"/>
+
+            </group>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_bachaco_tipos_de_elementos_fw_tree">
+        <field name="name">bachaco.tipos_de_elementos_fw.tree</field>
+        <field name="model">bachaco.tipos_de_elementos_fw</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="bachaco.tipos_de_elementos_fw">
+                <field name="denominacion"/>
+
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_bachaco_tipos_de_elementos_fw">
+        <field name="name">Tipos de Elementos</field>
+        <field name="res_model">bachaco.tipos_de_elementos_fw</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem name="AddOns Bachaco" id="menu_principal_bachaco_encuesta"/>
+        <menuitem name="Encuesta de Saberes" id="menu_bachaco_encuesta_saberes" parent="menu_principal_bachaco_encuesta"/>
+            <menuitem name="Encuesta" id="menu_bachaco_encuesta" action="action_bachaco_encuesta" parent="menu_bachaco_encuesta_saberes"/>
+            <menuitem name="Configuracion" id="menu_bachaco_encuesta_configuracion" parent="menu_bachaco_encuesta_saberes"/>
+
+                <menuitem name="Figuras Productivas" id="menu_bachaco_figuras_productivas" action="action_bachaco_figuras_productivas" parent="menu_bachaco_encuesta_configuracion"/>
+
+                <menuitem name="Elementos del Framework" id="menu_bachaco_elementos_framework" action="action_bachaco_elementos_framework" parent="menu_bachaco_encuesta_configuracion"/>
+
+                <menuitem name="Roles" id="menu_bachaco_roles" action="action_bachaco_roles" parent="menu_bachaco_encuesta_configuracion"/>
+
+                <menuitem name="Procesos de Gestión" id="menu_bachaco_procesos_gestion" action="action_bachaco_procesos_gestion" parent="menu_bachaco_encuesta_configuracion"/>
+
+                <menuitem name="Tipos de Elementos" id="menu_bachaco_tipos_de_elementos_fw" action="action_bachaco_tipos_de_elementos_fw" parent="menu_bachaco_encuesta_configuracion"/>
+
+        
+</data>
+</openerp>

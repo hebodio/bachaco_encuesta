@@ -1,0 +1,7 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_bachaco_encuesta","bachaco.encuesta","model_bachaco_encuesta","base.group_user",1,0,0,0
+"access_bachaco_figuras_productivas","bachaco.figuras_productivas","model_bachaco_figuras_productivas","base.group_user",1,0,0,0
+"access_bachaco_elementos_framework","bachaco.elementos_framework","model_bachaco_elementos_framework","base.group_user",1,0,0,0
+"access_bachaco_roles","bachaco.roles","model_bachaco_roles","base.group_user",1,0,0,0
+"access_bachaco_procesos_gestion","bachaco.procesos_gestion","model_bachaco_procesos_gestion","base.group_user",1,0,0,0
+"access_bachaco_tipos_de_elementos_fw","bachaco.tipos_de_elementos_fw","model_bachaco_tipos_de_elementos_fw","base.group_user",1,0,0,0
